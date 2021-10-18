@@ -7,7 +7,7 @@
 
   <div class="sol">
 
-      <img class="img-responsive" src="<?=$itemGaleria->getUrlPortfolio()?>" alt="<?=$itemGaleria->getDescripcion()?>">
+      <img class="img-responsive" src="<?=$itemGaleria->getUrlPortfolio()?>" alt="<?=$itemGaleria->getDescription()?>">
 
       <div class="behind">
 
@@ -17,7 +17,7 @@
 
             <li>
 
-              <a class="gallery" href="<?=$itemGaleria->getUrlGalery()?>" data-toggle="tooltip" data-original-title="Quick View">
+              <a class="gallery" href="<?=$itemGaleria->getUrlGallery()?>" data-toggle="tooltip" data-original-title="Quick View">
 
                 <i class="fa fa-eye"></i>
 

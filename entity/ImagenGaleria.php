@@ -88,7 +88,7 @@ class ImagenGaleria{
     /**
      * Get the value of nombre
      *
-     * @return  $string
+     * @return  string
      */ 
     public function getNombre()
     {
@@ -98,7 +98,7 @@ class ImagenGaleria{
     /**
      * Set the value of nombre
      *
-     * @param  $string  $nombre
+     * @param  string  $nombre
      *
      * @return  self
      */ 
@@ -112,7 +112,7 @@ class ImagenGaleria{
     /**
      * Get the value of description
      *
-     * @return  $string
+     * @return  string
      */ 
     public function getDescription()
     {
@@ -122,7 +122,7 @@ class ImagenGaleria{
     /**
      * Set the value of description
      *
-     * @param  $string  $description
+     * @param  string  $description
      *
      * @return  self
      */ 
@@ -136,7 +136,7 @@ class ImagenGaleria{
     /**
      * Get the value of numVisualizaciones
      *
-     * @return  $int
+     * @return  int
      */ 
     public function getNumVisualizaciones()
     {
@@ -146,7 +146,7 @@ class ImagenGaleria{
     /**
      * Set the value of numVisualizaciones
      *
-     * @param  $int  $numVisualizaciones
+     * @param  int  $numVisualizaciones
      *
      * @return  self
      */ 
@@ -160,7 +160,7 @@ class ImagenGaleria{
     /**
      * Get the value of numLikes
      *
-     * @return  $int
+     * @return  int
      */ 
     public function getNumLikes()
     {
@@ -170,7 +170,7 @@ class ImagenGaleria{
     /**
      * Set the value of numLikes
      *
-     * @param  $int  $numLikes
+     * @param  int  $numLikes
      *
      * @return  self
      */ 
@@ -184,7 +184,7 @@ class ImagenGaleria{
     /**
      * Get the value of numDownloads
      *
-     * @return  $int
+     * @return  int
      */ 
     public function getNumDownloads()
     {
@@ -194,7 +194,7 @@ class ImagenGaleria{
     /**
      * Set the value of numDownloads
      *
-     * @param  $int  $numDownloads
+     * @param  int  $numDownloads
      *
      * @return  self
      */ 
