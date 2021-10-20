@@ -17,7 +17,15 @@ function existeOpcionMenuActivaEnArray(array $options): bool{
     }
 }
 
+function sanitizeInput(string $data): string{
 
+    $date = trim($data);
+    //Quitar las comillas / \ y ""
+    $date = stripslashes($data);
+    //Prevenir la introduccion de scripts
+    $date = htmlspecialchars($data);
+    return $data;
+}
 
 
 
