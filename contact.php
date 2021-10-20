@@ -34,4 +34,14 @@ if("POST" === $_SERVER["REQUEST_METHOD"]){
         $errores[]  = "Nombre es obligatorio";
         $firstNameError = true;
     }
+    if(!$hayErrores){
+
+        $info = "Mensaje insertado correctamente:";
+
+        $firstName = $lastName = $email = $subject = $message = "";
+    }else{
+        $info = "Datos erroeos";
+    }
 }
+
+include ("./views/contact.view.php");
