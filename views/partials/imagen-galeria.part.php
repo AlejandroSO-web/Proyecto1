@@ -3,6 +3,7 @@
   <div class="row popup-gallery">
 
     <?php foreach ($galeria as $itemGaleria):?>
+
         <div class="col-xs-12 col-sm-6 col-md-3">
 
   <div class="sol">

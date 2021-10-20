@@ -77,11 +77,11 @@ class ImagenGaleria{
                                 int $numVisualizaciones = 0, int $numLikes = 0,
                                 int $numDownloads = 0){
 
-                $this->$nombre = $nombre;
-                $this->$description = $description;
-                $this->$numVisualizaciones = $numVisualizaciones;
-                $this->$numLikes = $numLikes;
-                $this->$numDownloads = $numDownloads;
+                $this->nombre = $nombre;
+                $this->description = $description;
+                $this->numVisualizaciones = $numVisualizaciones;
+                $this->numLikes = $numLikes;
+                $this->numDownloads = $numDownloads;
         
     }
 
