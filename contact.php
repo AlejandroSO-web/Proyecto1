@@ -1,7 +1,6 @@
 <?php
     $title = "Contact";
     require_once "./utils/utils.php";
-    include("./views/contact.view.php");
 
 $info = $firstName = $lastName = $email = $subject = $message = "";
 $firstNameError = $emailErr = $subjectError = $hayErrores = false;
@@ -27,12 +26,9 @@ if("POST" === $_SERVER["REQUEST_METHOD"]){
         $errores[]  = "El asunto es obligatorio";
         $subjectError = true;
     }
+    
     if (sizeof($errores) > 0){
         $hayErrores = true;
-    }
-    if (empty($firstName)){
-        $errores[]  = "Nombre es obligatorio";
-        $firstNameError = true;
     }
     if(!$hayErrores){
 
