@@ -32,7 +32,7 @@ if("POST" === $_SERVER["REQUEST_METHOD"]){
                 $imagenErr = true;
         }
         if (!$imagenErr){
-            if (false === move_uploaded_file($_FILES['imagen']['tmp_name'],'images/index/gallery/'.$_FILES['images']['name'])){
+            if (false === move_uploaded_file($_FILES['imagen']['tmp_name'],"images/index/gallery/" .$_FILES['imagen']['name'])){
                 $errores[] = "Se ha producido un error al mover la imagen";
                 $imagenErr = true;
             }
@@ -49,7 +49,7 @@ if("POST" === $_SERVER["REQUEST_METHOD"]){
 
     if (!$hayErrores){
         $info = "Imagen enviada correctamente";
-        $urlImagen = "images/index/gallery/" . $_FILES['images']['name'];
+        $urlImagen = "images/index/gallery/" . $_FILES['imagen']['name'];
         $description = "";
     }else{
         $info = "Datos erroneos";
