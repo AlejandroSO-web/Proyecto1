@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "/../exception/FileException.php";
+require_once __DIR__ . "/../exceptions/FileException.php";
 require_once __DIR__ . "/utils.php";
 
 class File{
@@ -61,6 +61,7 @@ class File{
         if(true === is_file($ruta)){
             $idUnico = time();
             $this->fileName = $idUnico . "_" . $this->getFileName();
+            $ruta = $destPath . $this->getFileName();
         }
         if(false === move_uploaded_file($this->file["tmp_name"], $ruta)){
             throw new FileException("No se puede mover el fichero a su destino");
