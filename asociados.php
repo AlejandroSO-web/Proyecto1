@@ -1,15 +1,13 @@
 <?php
-    $title = "Galeria";
+$title = "Asociado";
     require_once "./utils/utils.php";
-    require_once "./entity/ImagenGaleria.php";
+    require_once "./entity/Asociado.php";
     require_once "./utils/File.php";
     require_once "./exceptions/FileException.php";
     require_once "./utils/SimpleImage.php";
 
-$info = $description = $urlImagen ="";
-$descriptionError = $imagenErr = $hayErrores = false;
-
-
+$info = $descripcion = $nombre = $urlImagen ="";
+$nombreError = $imagenErr = $hayErrores = false;
 $errores= [];
 
 if("POST" === $_SERVER["REQUEST_METHOD"]){
@@ -22,17 +20,15 @@ if("POST" === $_SERVER["REQUEST_METHOD"]){
         $imageFile = new File("imagen", 
         array("image/jpeg","image/jpg","image/png") ,
          (2 * 1024 * 1024));
-        $imageFile->saveUploadedFile(ImagenGaleria::RUTA_IMAGENES_GALLERY);
+        $imageFile->saveUploadedFile(Asociado::RUTA_IMAGENES_Asociados);
 
     try {
         $simpleImage = new \claviska\SimpleImage();
 
         $simpleImage
-        ->fromFile(ImagenGaleria::RUTA_IMAGENES_GALLERY . $imageFile->getFileName())
-        ->resize(975,525)
-        ->toFile(ImagenGaleria::RUTA_IMAGENES_PORTFOLIO . $imageFile->getFileName())
-        ->resize(650,350)
-        ->toFile(ImagenGaleria::RUTA_IMAGENES_GALLERY . $imageFile->getFileName());
+        ->fromFile(Asociado::RUTA_IMAGENES_Asociados . $imageFile->getFileName())
+        ->resize(50,50)
+        ->toFile(Asociado::RUTA_IMAGENES_Asociados . $imageFile->getFileName());
     }catch(Exception $err){
         $errores[]= $err->getMessage();
         $imagenErr = true;
@@ -42,16 +38,16 @@ if("POST" === $_SERVER["REQUEST_METHOD"]){
             $errores[] = $fe->getMessage();
             $imagenErr = true;
     }
-    $description = sanitizeInput(($_POST["description"] ?? ""));
+    $nombre = sanitizeInput(($_POST["nombre"] ?? ""));
         
-        if(empty($description)){
+        if(empty($nombre)){
             $errores[] ="La descripcion es obligatoria";
-            $descriptionError = true;
+            $nombreError = true;
         }
-
+        $descripcion = sanitizeInput(($_POST["descripcion"] ?? ""));
         if (0 == count($errores)){
             $info = 'Imagen enviada correctamente';
-            $urlImagen = ImagenGaleria::RUTA_IMAGENES_GALLERY . $imageFile->getFileName();
+            $urlImagen = Asociado::RUTA_IMAGENES_Asociados . $imageFile->getFileName();
             $description = "";
         }else{
             $info ="Datos erroneos";
