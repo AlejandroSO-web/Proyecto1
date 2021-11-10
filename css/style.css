@@ -1171,9 +1171,7 @@ img{
 #contact input:active{
 	background-color: rgba(255,255,255,0.1);
 }
-#contact input.has-error{
-	background-color: rgb(100, 0, 0,0.5);
-}
+
 #contact label{
 	color: #a6e1ec;
 	font-size: 17px;
@@ -1211,3 +1209,7 @@ img{
 	margin-bottom: 20px;
 }
 /*-- End of Contact Page Stylesheet --*/
+/* Estilos propios */
+#contact input.has-error{
+	background-color:rgba(100,0,0,0.5);
+}

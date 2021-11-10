@@ -1,32 +1,38 @@
-<?php
-class Asociado{
+<?php 
 
-    const RUTA_IMAGENES_Asociados = 'images/index/';
-
-    /** 
-    *@var string
-    */
+class Asociado
+{
+    const RUTA_IMAGENES_ASOCIADO = 'images/index/';
+    /**
+     * @var string
+     */
     private $nombre;
 
-    /** 
-    *@var string
-    */
+    /**
+     * @var string
+     */
     private $logo;
 
-    /** 
-    *@var string
-    */
+    /**
+     * @var string
+     */
     private $descripcion;
 
-    public function __construct(string $nombre,string $logo, string $descripcion ="" )
-    {
+    /**
+     * @param string $nombre
+     * @param string $logo
+     * @param string $descripcion
+     */
+    public function __construct(string $nombre, string $logo, string $descripcion = ""){
         $this->nombre = $nombre;
         $this->logo = $logo;
         $this->descripcion = $descripcion;
     }
 
     /**
-     * Get *@var string
+     * Get the value of nombre
+     *
+     * @return  string
      */ 
     public function getNombre()
     {
@@ -34,11 +40,13 @@ class Asociado{
     }
 
     /**
-     * Set *@var string
+     * Set the value of nombre
+     *
+     * @param  string  $nombre
      *
      * @return  self
      */ 
-    public function setNombre($nombre)
+    public function setNombre(string $nombre)
     {
         $this->nombre = $nombre;
 
@@ -46,7 +54,9 @@ class Asociado{
     }
 
     /**
-     * Get *@var string
+     * Get the value of logo
+     *
+     * @return  string
      */ 
     public function getLogo()
     {
@@ -54,11 +64,13 @@ class Asociado{
     }
 
     /**
-     * Set *@var string
+     * Set the value of logo
+     *
+     * @param  string  $logo
      *
      * @return  self
      */ 
-    public function setLogo($logo)
+    public function setLogo(string $logo)
     {
         $this->logo = $logo;
 
@@ -66,7 +78,9 @@ class Asociado{
     }
 
     /**
-     * Get *@var string
+     * Get the value of descripcion
+     *
+     * @return  string
      */ 
     public function getDescripcion()
     {
@@ -74,14 +88,26 @@ class Asociado{
     }
 
     /**
-     * Set *@var string
+     * Set the value of descripcion
+     *
+     * @param  string  $descripcion
      *
      * @return  self
      */ 
-    public function setDescripcion($descripcion)
+    public function setDescripcion(string $descripcion)
     {
         $this->descripcion = $descripcion;
 
         return $this;
+    }
+
+    /**
+     * Devuelve el path a las imágenes del asociado
+     *
+     * @return string
+     */
+    public function getUrlImagen() : string
+    {
+        return self::RUTA_IMAGENES_ASOCIADO . $this->getLogo();
     }
 }

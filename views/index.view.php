@@ -1,7 +1,8 @@
 <?php
-      include __DIR__ . "/partials/inicio-doc.part.php";
-      include __DIR__ . "/partials/nav.part.php";
+  include __DIR__ . "/partials/inicio-doc.part.php";
+  include __DIR__ . "/partials/nav.part.php";
 ?>
+
 
 <!-- Principal Content Start -->
    <div id="index">
@@ -38,21 +39,22 @@
       
       <!-- Navigation Table Content -->
         <div class="tab-content">
+          <?php
+            $categoryId = '1';
+            $active = true;
+            shuffle($galeria);
+            include __DIR__ . "/partials/imagen-galeria.part.php";
+            $categoryId = '2';
+            $active = false;
+            shuffle($galeria);
+            include __DIR__ . "/partials/imagen-galeria.part.php";
+            $categoryId = '3';
+            $active = false;
+            shuffle($galeria);
+            include __DIR__ . "/partials/imagen-galeria.part.php";
 
-        <?php
-          $categoryId = '1';
-          $active = true;
-          shuffle($galeria);
-          include __DIR__ . "/partials/imagen-galeria.part.php";
-          $categoryId = '2';
-          $active = false;
-          shuffle($galeria);
-          include __DIR__ . "/partials/imagen-galeria.part.php";
-          $categoryId = '3';
-          $active = false;
-          shuffle($galeria);
-          include __DIR__ . "/partials/imagen-galeria.part.php";
           ?>
+  
         </div>
     <!-- End of Navigation Table Content -->
       </div><!-- End of Index-body box -->
@@ -72,12 +74,9 @@
       </div>
     <!-- End of Newsletter form -->  
 
-    <!-- Box within partners name and logo -->
-      <?php
-      include __DIR__ . "/partials/asociado.part.php";
-      ?>
-    <!-- End of Box within partners name and logo -->
-
+<?php
+  include __DIR__ . "/partials/asociado.part.php";
+?>
    </div><!-- End of index box -->
 
    <!-- Footer -->
@@ -102,5 +101,5 @@
    </footer>
 
 <?php
-      include __DIR__ . "/partials/fin-doc.part.php";
+  include __DIR__ . "/partials/fin-doc.part.php";
 ?>

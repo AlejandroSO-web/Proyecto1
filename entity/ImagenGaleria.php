@@ -1,88 +1,43 @@
 <?php
-class ImagenGaleria{
+class ImagenGaleria
+{
     const RUTA_IMAGENES_PORTFOLIO = 'images/index/portfolio/';
-
     const RUTA_IMAGENES_GALLERY = 'images/index/gallery/';
-
-    //....  
-
-    /**
-
-     * Devuelve el path a las imágenes del portfolio
-
-     *
-
-     * @return string
-
-     */
-
-    public function getUrlPortfolio() : string
-
-    {
-
-        return self::RUTA_IMAGENES_PORTFOLIO . $this->getNombre();
-
-    }
-
-    /**
-
-     * Devuelve el path a las imágenes de la galería
-
-     *
-
-     * @return string
-
-     */
-
-    public function getUrlGallery() : string
-
-    {
-
-        return self::RUTA_IMAGENES_GALLERY . $this->getNombre();
-
-    }
-
-
-
     /**
      * @var string
      */
     private $nombre;
 
-
     /**
      * @var string
      */
-    private $description;
-
-
+    private $descripcion;
+    
     /**
      * @var int
      */
     private $numVisualizaciones;
-
-
+    
     /**
      * @var int
      */
     private $numLikes;
 
-
     /**
      * @var int
      */
     private $numDownloads;
+    
 
-    public function __construct(string $nombre,string $description,
+    public function __construct(string $nombre, string $descripcion,
                                 int $numVisualizaciones = 0, int $numLikes = 0,
                                 int $numDownloads = 0){
+        $this->nombre = $nombre;
+        $this->descripcion = $descripcion;
+        $this->numVisualizaciones = $numVisualizaciones;
+        $this->numLikes = $numLikes;
+        $this->numDownloads = $numDownloads;
 
-                $this->nombre = $nombre;
-                $this->description = $description;
-                $this->numVisualizaciones = $numVisualizaciones;
-                $this->numLikes = $numLikes;
-                $this->numDownloads = $numDownloads;
-        
     }
 
     /**
@@ -110,25 +65,25 @@ class ImagenGaleria{
     }
 
     /**
-     * Get the value of description
+     * Get the value of descripcion
      *
      * @return  string
      */ 
-    public function getDescription()
+    public function getDescripcion()
     {
-        return $this->description;
+        return $this->descripcion;
     }
 
     /**
-     * Set the value of description
+     * Set the value of descripcion
      *
-     * @param  string  $description
+     * @param  string  $descripcion
      *
      * @return  self
      */ 
-    public function setDescription(string $description)
+    public function setDescripcion(string $descripcion)
     {
-        $this->description = $description;
+        $this->descripcion = $descripcion;
 
         return $this;
     }
@@ -203,5 +158,25 @@ class ImagenGaleria{
         $this->numDownloads = $numDownloads;
 
         return $this;
+    }
+    
+    /**
+     * Devuelve el path a las imágenes del portfolio
+     *
+     * @return string
+     */
+    public function getUrlPortfolio() : string
+    {
+        return self::RUTA_IMAGENES_PORTFOLIO . $this->getNombre();
+    }
+
+    /**
+     * Devuelve el path a las imágenes de la galería
+     *
+     * @return string
+     */
+    public function getUrlGallery() : string
+    {
+        return self::RUTA_IMAGENES_GALLERY . $this->getNombre();
     }
 }
