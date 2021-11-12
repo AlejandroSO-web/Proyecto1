@@ -1,20 +1,22 @@
 <?php
 
-    $idCategoria = 1;
+require_once "../entity/ImagenGaleria.php";
+require_once "../database/Connection.php";
+require_once "../database/QueryBuilder.php";
 
-    $imagenes = [
+        $connection = Connection::make();
+        $queryBuilder = new QueryBuilder($connection);
 
-            ['nombre' => '1.jpg', 'alt' => 'Foto 1'],
+        try {
 
-            ['nombre' => '2.jpg', 'alt' => 'Foto 2'],
-
-            ['nombre' => '3.jpg', 'alt' => 'Foto 3'],
-
-            ['nombre' => '4.jpg', 'alt' => 'Foto 4'],
-
-            ['nombre' => '5.jpg', 'alt' => 'Foto 5']
-
-    ];
-
+                $imagenes = $queryBuilder->findAll('imagenes' , 'imagenGaleria');
+                foreach ($imagenes as $imagen){
+                        echo 'id: ' . $imagen->getId() . '<br>';
+                        echo 'Imagen: ' . $imagen->getUrlGallery() . '<br>';
+                        echo 'Descripcion: ' . $imagen->getDescripcion() . '<br>'; 
+                }
+        }catch(QueryException $qe){
+                die($qe->getMessage());
+        }
     include __DIR__ . "/imagenes.view.php";
 
