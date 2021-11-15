@@ -15,9 +15,9 @@
     require_once "./entity/ImagenGaleria.php";
     require_once "./database/Connection.php";
     require_once "./database/QueryBuilder.php";
-    $config = require_once 'app/config.php';
+    require_once "./core/App.php";
+   
     $connection = Connection::make($config['database']);
-    print_r($config);
     $info = $urlImagen = "";
 
     $description = new TextareaElement();
@@ -37,6 +37,10 @@
       ->setValidator($fv);
 
     $labelFile = new LabelElement('Imagen', $file);
+    
+    $config = require_once 'app/config.php';
+    App::bind('config',$config);
+    App::bind('connection', Connection::make($config['database']));
 
     $b = new ButtonElement('Send');
     $b->setCssClass('pull-right btn btn-lg sr-button');
