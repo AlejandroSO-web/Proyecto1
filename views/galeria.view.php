@@ -19,60 +19,64 @@
 
 <div class="imagenes_galeria">
 
-    <table class="table">
+<table class="table">
 
-        <thead>
+<thead>
 
-        <tr>
+<tr>
 
-            <th scope="col">#</th>
+    <th scope="col">#</th>
 
-            <th scope="col">Imagen</th>
+    <th scope="col">Imagen</th>
 
-            <th scope="col">Visualizaciones</th>
+    <th scope="col">Visualizaciones</th>
 
-            <th scope="col">Likes</th>
+    <th scope="col">Likes</th>
 
-            <th scope="col">Descargas</th>
+    <th scope="col">Descargas</th>
 
-        </tr>
+    <th scope="col">Categoría</th>
 
-        </thead>
+</tr>
 
-        <tbody>
+</thead>
 
-        <?php foreach ($imagenes as $imagen): ?>
+<tbody>
 
-            <tr>
+<?php foreach ($imagenes as $imagen): ?>
 
-                <th scope="row"><?= $imagen->getId(); ?></th>
+    <tr>
 
-                <td>
+        <th scope="row"><?= $imagen->getId(); ?></th>
 
-                    <img src="<?= $imagen->getUrlGallery(); ?>"
+        <td>
 
-                         alt="<?= $imagen->getDescripcion(); ?>"
+            <img src="<?= $imagen->getUrlGallery(); ?>"
 
-                         title="<?= $imagen->getDescripcion(); ?>"
+                 alt="<?= $imagen->getDescripcion(); ?>"
 
-                         width="100px">
+                 title="<?= $imagen->getDescripcion(); ?>"
 
-                </td>
+                 width="100px">
 
-                <td><?= $imagen->getNumVisualizaciones(); ?></td>
+        </td>
 
-                <td><?= $imagen->getNumLikes(); ?></td>
+        <td><?= $imagen->getNumVisualizaciones(); ?></td>
 
-                <td><?= $imagen->getNumDownloads(); ?></td>
+        <td><?= $imagen->getNumLikes(); ?></td>
 
-            </tr>
+        <td><?= $imagen->getNumDownloads(); ?></td>
 
-        <?php endforeach; ?>
+        <td><?= $repositorio->getCategoria($imagen)->getNombre(); ?></td>
 
-        </tbody>
 
-    </table>
+    </tr>
 
+<?php endforeach; ?>
+
+</tbody>
+
+</table>
 </div>
 
 

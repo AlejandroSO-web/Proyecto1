@@ -35,17 +35,25 @@ class ImagenGaleria extends Entity
      * @var int
      */
     private $numDownloads;
+
+
+    /**
+     * @var int
+     */
+    private $categoria;
+
     
 
     public function __construct(string $nombre ='', string $descripcion = '',
                                 int $numVisualizaciones = 0, int $numLikes = 0,
-                                int $numDownloads = 0){
+                                int $numDownloads = 0,int $categoria = 0){
         $this->id = null;
         $this->nombre = $nombre;
         $this->descripcion = $descripcion;
         $this->numVisualizaciones = $numVisualizaciones;
         $this->numLikes = $numLikes;
         $this->numDownloads = $numDownloads;
+        $this->categoria = $categoria;
 
     }
 
@@ -216,7 +224,32 @@ class ImagenGaleria extends Entity
             'descripcion' => $this->getDescripcion(),
             'numVisualizaciones' => $this->getNumVisualizaciones(),
             'numLikes' => $this->getNumLikes(),
-            'numDownloads' => $this->getNumDownloads()
+            'numDownloads' => $this->getNumDownloads(),
+            'categoria' => $this->getCategoria()
         ];
+    }
+
+    /**
+     * Get the value of categoria
+     *
+     * @return  int
+     */ 
+    public function getCategoria()
+    {
+        return $this->categoria;
+    }
+
+    /**
+     * Set the value of categoria
+     *
+     * @param  int  $categoria
+     *
+     * @return  self
+     */ 
+    public function setCategoria(int $categoria)
+    {
+        $this->categoria = $categoria;
+
+        return $this;
     }
 }

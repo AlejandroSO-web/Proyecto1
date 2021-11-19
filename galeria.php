@@ -16,8 +16,15 @@
     require_once "./database/Connection.php";
     require_once "./database/QueryBuilder.php";
     require_once "./core/App.php";
-   
-    $connection = Connection::make($config['database']);
+    require_once "./repository/ImagenGaleriaRepository.php";
+    require_once "./utils/Forms/SelectElement.php";
+    require_once "./utils/Forms/OptionElement.php";
+    require_once "./repository/CategoriaRepository.php";
+    $config = require_once 'app/config.php';
+    App::bind('config',$config);
+    App::bind('connection', Connection::make($config['database']));
+
+    
     $info = $urlImagen = "";
 
     $description = new TextareaElement();
@@ -38,10 +45,22 @@
 
     $labelFile = new LabelElement('Imagen', $file);
     
-    $config = require_once 'app/config.php';
-    App::bind('config',$config);
-    App::bind('connection', Connection::make($config['database']));
 
+    $repositorio  = new ImagenGaleriaRepository();
+    $repositorioCategoria = new CategoriaRepository();
+    $categoriasElement = new SelectElement(false);
+    
+    $categoriasElement
+    ->setName('categoria');
+    $categorias = $repositorioCategoria->findAll();
+    foreach($categorias as $categoria){
+      $option = new OptionElement($categoriasElement, $categoria->getNombre());
+
+      $option->setDefaultValue( $categoria->getId());
+      $categoriasElement->appendChild($option);
+    }
+
+    $categoriaWrapper = new MyFormControl($categoriasElement, 'Categoria' , 'col-xs-12');
     $b = new ButtonElement('Send');
     $b->setCssClass('pull-right btn btn-lg sr-button');
 
@@ -51,6 +70,7 @@
     ->appendChild($labelFile)
     ->appendChild($file)
     ->appendChild($descriptionWrapper)
+    ->appendChild($categoriaWrapper)
     ->appendChild($b);
 
     if ("POST" === $_SERVER["REQUEST_METHOD"]) {
@@ -68,31 +88,21 @@
               ->toFile(ImagenGaleria::RUTA_IMAGENES_GALLERY . $file->getFileName()); 
               
               $urlImagen = ImagenGaleria::RUTA_IMAGENES_GALLERY . $file->getFileName();
-              
-
-              $sql = "INSERT INTO imagenes (nombre,descripcion) VALUES (:nombre,:descripcion)";
-              
-              $pdoStatement = $connection->prepare($sql);
-              $parameters = [':nombre' => $file->getFileName(),
-                            ':descripcion' => $description->getValue()];
-          if(false === $pdoStatement->execute($parameters)){
-              $form->addError('No se ha podido guardar la imagen en la base de datos');
-          }else{
-              $info = 'Imagen enviada correctamente';
+              $imagenGaleria = new ImagenGaleria($file->getFileName(),$description->getValue(),0,0,0, $categoriasElement->getValue());
+              $repositorio->save($imagenGaleria);
               $form->reset();
-          }                            
+              $info = 'Imagen enviada correctamente';
+                                 
           }catch(Exception $err) {
               $form->addError($err->getMessage());
               $imagenErr = true;
           }
         }
     }
-
-  
-    $queryBuilder = new QueryBuilder($connection);
     try{
-      $imagenes = $queryBuilder->findAll('imagenes' , 'ImagenGaleria');
+      $imagenes = $repositorio->findAll();
     }catch(QueryException $qe){
       $imagenes =[];
+      echo $qe->getMessage();
     }
     include("./views/galeria.view.php");

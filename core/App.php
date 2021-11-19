@@ -1,6 +1,7 @@
 <?php
 require_once './database/Connection.php';
 require_once './database/QueryBuilder.php';
+require_once './exceptions/AppException.php';
 
 class App{
 
