@@ -54,7 +54,6 @@ abstract class QueryBuilder{
                implode(', ', array_keys($parameters)),
                ':'. implode(', :', array_keys($parameters))
            );
-
            $statement = $this->connection->prepare($sql);
            $statement->execute($parameters);
 

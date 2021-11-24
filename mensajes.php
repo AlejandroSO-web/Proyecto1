@@ -13,12 +13,12 @@
     require_once "./utils/Validator/MaxSizeValidator.php";    
     require_once "./exceptions/FileException.php";
     require_once "./utils/SimpleImage.php";
-    require_once "./entity/Asociado.php";
-    require_once "./repository/AsociadoRepository.php";
+    require_once "./entity/Mensaje.php";
+    require_once "./repository/MensajeRepository.php";
     $config = require_once 'app/config.php';
     App::bind('config',$config);
     App::bind('connection', Connection::make($config['database']));
-    $repositorio  = new AsociadoRepository();
+    $repositorio  = new MensajeRepository();
     $info = $urlImagen = "";
 
     $nombre = new InputElement('text');
@@ -61,17 +61,17 @@
         $form->validate();
         if (!$form->hasError()) {
           try {
-            $file->saveUploadedFile(Asociado::RUTA_IMAGENES_ASOCIADO);  
+            $file->saveUploadedFile(Mensaje::RUTA_IMAGENES_MENSAJE);  
               // Create a new SimpleImage object
               $simpleImage = new \claviska\SimpleImage();
               $simpleImage
-              ->fromFile(Asociado::RUTA_IMAGENES_ASOCIADO . $file->getFileName())  
+              ->fromFile(Mensaje::RUTA_IMAGENES_MENSAJE . $file->getFileName())  
               ->resize(50, 50)
-              ->toFile(Asociado::RUTA_IMAGENES_ASOCIADO . $file->getFileName());
+              ->toFile(Mensaje::RUTA_IMAGENES_MENSAJE . $file->getFileName());
               $info = 'Imagen enviada correctamente'; 
-              $urlImagen = Asociado::RUTA_IMAGENES_ASOCIADO . $file->getFileName();
-              $asociado = new Asociado($nombre->getValue(),$file->getFileName(),$description->getValue());
-              $repositorio->save($asociado);
+              $urlImagen = Mensaje::RUTA_IMAGENES_MENSAJE . $file->getFileName();
+              $mensaje = new Mensaje($nombre->getValue(),$file->getFileName(),$description->getValue());
+              $repositorio->save($mensaje);
               $form->reset();
             
           }catch(Exception $err) {

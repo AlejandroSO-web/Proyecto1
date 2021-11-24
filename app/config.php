@@ -2,7 +2,7 @@
 return [
     'database' => [
         'name' => 'proyecto1',
-        'username' => 'proyecto',
+        'username' => 'root',
         'password' => 'sa',
         'connection' => 'mysql:host=localhost',
         'options' => [
