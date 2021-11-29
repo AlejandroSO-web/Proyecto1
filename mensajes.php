@@ -20,7 +20,7 @@
     App::bind('connection', Connection::make($config['database']));
     $repositorio  = new MensajeRepository();
     $info = $urlImagen = "";
-
+    session_start();
     $nombre = new InputElement('text');
     $nombre
      ->setName('nombre')

@@ -21,6 +21,12 @@
     $repositorio  = new AsociadoRepository();
     $info = $urlImagen = "";
 
+
+    session_start();
+      if(!isset($_SESSION['username'])){
+        header('location: /login.php');
+      }
+      
     $nombre = new InputElement('text');
     $nombre
      ->setName('nombre')

@@ -24,6 +24,10 @@
     App::bind('config',$config);
     App::bind('connection', Connection::make($config['database']));
 
+    session_start();
+      if(!isset($_SESSION['username'])){
+        header('location: /login.php');
+      }
     
     $info = $urlImagen = "";
 

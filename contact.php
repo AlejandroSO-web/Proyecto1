@@ -9,7 +9,7 @@
     require_once "./utils/Forms/custom/MyFormGroup.php";
     require_once "./utils/Forms/custom/MyFormControl.php";
     require_once "./utils/Validator/NotEmptyValidator.php";
- 
+    session_start();
     $info = "";
     $firstName = new InputElement('text');
     $firstName
