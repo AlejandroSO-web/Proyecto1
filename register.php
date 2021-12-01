@@ -18,10 +18,12 @@
   require_once "./utils/SimpleImage.php";
   require_once "./entity/Usuario.php";
   require_once "./repository/UsuarioRepository.php";
+  require_once "./security/PlainPasswordGenerator.php";
+  require_once "./security/BCryptPasswordGenerator.php";
   $config = require_once 'app/config.php';
   App::bind('config',$config);
   App::bind('connection', Connection::make($config['database']));
-  $repositorio  = new UsuarioRepository();
+  $repositorio  = new UsuarioRepository(new BCryptPasswordGenerator());
   $info = $urlImagen = "";
   session_start();
 

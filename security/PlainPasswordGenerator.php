@@ -7,4 +7,8 @@ class PlainPasswordGenerator implements IPasswordGenerator{
     {
         return $plainPassword;
     }
+    public static function passwordVerify($password, $hash): bool
+    {
+        return ($password == $hash);
+    }
 }
